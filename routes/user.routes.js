@@ -7,11 +7,10 @@ const {
 } = require("../controllers/user.controller");
 const { check } = require("express-validator");
 
-//impor rol from bd
 
-const Rol = require("../models/rol");
 
 const { validarCampos } = require("../middlewares/validar.campos");
+const { ValidRol, emailExist } = require("../helpers/db.Validators");
 
 const router = Router();
 
@@ -24,13 +23,10 @@ router.post(
     check("password", "El password debe de ser más de 6 letras").isLength({
       min: 6,
     }),
-    check("correo", "El correo no es valido").isEmail(),
+   // check("email", "El email no es valido").isEmail(),
+    check("email").custom(emailExist),
     //check('rol','No es un rol permitido').isIn(['ADMIN_ROLE','USER_ROLE']),
-    check("rol").custom(async (rol = '') => {
-    const existRol = await Rol.findOne({rol});
-      if(!existRol)
-      throw new Error(`El rol ${rol} no esta registrado en la BD`);
-    }),
+    check("rol").custom(ValidRol),
     validarCampos,
   ],
   userPost
