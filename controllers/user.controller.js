@@ -2,14 +2,18 @@ const { response } = require("express");
 const bcryptjs = require("bcryptjs");
 const Usuario = require("../models/usuario");
 const DataHash =require('../helpers/data.Hash');
+const usuario = require("../models/usuario");
 
-const userGet = (req, res = response) => {
-  const { q, nombre, edad } = req.query;
+const userGet = async(req, res = response) => {
+  //const { q, nombre, edad } = req.query;
+  const { limit =5 , begin=0} = req.query;
+  const usuarios = await Usuario.find()
+  .skip(Number(begin))
+  .limit(Number(limit));
+
   res.json({
     msg: "get API-controller",
-    q,
-    nombre,
-    edad,
+    usuarios
   });
 };
 
@@ -23,22 +27,26 @@ const userPost = async (req, res = response) => {
 
   //guardar en bd
   await usuario.save();
-  console.log(res);
   res.json({
     msg: "Post API-controller",
     usuario,
   });
 };
 
-const userPut = (req, res = response) => {
-  const id = req.params.id;
-  const { password, google, ...resto } = req.body;
+const userPut = async(req, res = response) => {
+  const { id } = req.params;
+  const { _id,password, google,email,...resto } = req.body;
 
-  //Validar contra BD
   
+  //Validar contra BD
+  if(password){
+    resto.password =DataHash(password);
+  }
+  const usuario = await Usuario.findByIdAndUpdate(id,resto);
+
   res.json({
     msg: "put API-controller",
-    id,
+    usuario
   });
 };
 

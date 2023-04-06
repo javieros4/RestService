@@ -9,13 +9,25 @@ const ValidRol = async (rol = '') => {
 };
 
 const emailExist = async (email = '') => {
-  const exist = await Usuario.findOne({ email });
+  const exist = await Usuario.findOne({email});
   if (exist) {
     throw new Error(`El email ${email} ya esta registrado  en la BD`);
   }
 };
 
+
+const userExistById = async (id) => {
+  const exist = await Usuario.findById(id);
+  if (!exist) {
+    throw new Error(`El ID de usuario ${id} no existe en la BD`);
+  }
+};
+
+
+
 module.exports = {
   ValidRol,
-  emailExist
+  emailExist,
+  userExistById
+
 };
