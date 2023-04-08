@@ -53,6 +53,7 @@ const userPut = async(req, res = response) => {
   if(password){
     resto.password =DataHash(password);
   }
+
   const usuario = await Usuario.findByIdAndUpdate(id,resto);
 
   res.json({
