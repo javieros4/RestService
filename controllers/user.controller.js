@@ -54,11 +54,11 @@ const userPut = async(req, res = response) => {
     resto.password =DataHash(password);
   }
 
-  const usuario = await Usuario.findByIdAndUpdate(id,resto);
+  const resp = await Usuario.findByIdAndUpdate(id,resto,{new: true}  );
 
   res.json({
     msg: "put API-controller",
-    usuario
+    resp
   });
 };
 
@@ -70,7 +70,7 @@ const userDelete =async (req, res = response) => {
   //const usuario = await Usuario.findByIdAndDelete(id);
 
   //borrado logico
-  const usuario = await Usuario.findByIdAndUpdate(id,{estado:false});
+  const usuario = await Usuario.findByIdAndUpdate(id,{estado:false},{new:true});
 
   res.json({
     msg: "Delete API-controller",

@@ -6,9 +6,9 @@ try{
 
     await mongoose.connect(process.env.MONGODB_ATLAS,{
        useNewUrlParser:true,
-       useUnifiedTopology:true,    
+       useUnifiedTopology:true
     });
-
+console.log(mongoose.version);
     console.log('BD online');
 
 

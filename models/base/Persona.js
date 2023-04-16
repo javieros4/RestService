@@ -1,17 +1,26 @@
 const { Schema, model } = require("mongoose");
-const TipoContacto = mongoose.model('TipoContacto');
 
 const PersonaSchema = Schema({
-    tipoContacto: {
+    nombre: {
+        type:String,
+        require:[true,'El nombre es requerido']
+    },
+    apellidoPaterno: {
+        type:String,
+        require:[true,'El apellido Paterno es requerido']
+    },
+    apellidoMaterno: {
+        type:String,
+        require:[true,'El apellido Materno es requerido']
+    },
+    rfc:{
+        type:String,
+    },
+    contacto: {
         type: Schema.ObjectId,
-        ref: 'TipoContacto'
+        ref: 'Contacto'
     },
-    telefono: {
-        type: Number
-    },
-    email: {
-        type: String
-    }
+    
 });
 
 module.exports = model('Persona',PersonaSchema);

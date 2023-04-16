@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 const TipoContacto = mongoose.model('Persona');
 
 const CirujanoSchema = Schema({
-    informacion:{
+    persona:{
         type:Schema.ObjectId, 
         ref:'Persona',
         require:[true,'Los datos personales son necesarios']        
