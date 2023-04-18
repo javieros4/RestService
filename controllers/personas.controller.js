@@ -4,6 +4,7 @@ const Persona = require("../models/base/Persona");
 const Contacto = require("../models/base/Contacto");
 
 const personaPost = async(req,res = response) => {
+    console.log(req);
     const { nombre,apellidoPaterno,apellidoMaterno,rfc} = req.body;
     const persona = new Persona({nombre,apellidoPaterno,apellidoMaterno,rfc})
 

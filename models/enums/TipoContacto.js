@@ -9,11 +9,18 @@ const { Schema, model } = require("mongoose");
 
 
 const TipoContactoSchema = Schema ({
-    value:{
-        type:String,
-        enum:tipoContacto,
-        default:tipoContacto.paciente
-    },
-})
+         value:{
+       type:String,
+         enum:tipoContacto,
+         default:tipoContacto.paciente
+     },
+ })
+
+// const TipoContactoSchema = Schema ({
+//     value:{
+//         type:String,
+//         require:[true, 'El valor es obligatorio']
+//     },
+// })
     
 module.exports = model('TipoContacto',TipoContactoSchema)

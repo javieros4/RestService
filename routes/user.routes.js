@@ -19,7 +19,7 @@ const router = Router();
 router.get("/", userGet);
 
 router.post(
-  "/",
+  '/',
   [
     check("nombre", "El nombre no obligatorio").not().isEmpty(),
     check("password", "El password debe de ser más de 6 letras").isLength({

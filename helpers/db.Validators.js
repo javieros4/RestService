@@ -1,4 +1,5 @@
 const Rol = require("../models/rol");
+//const TipoContacto = require("../models/enums/TipoContacto");
 const Usuario = require("../models/usuario"); 
 
 const ValidRol = async (rol = '') => {
@@ -7,6 +8,14 @@ const ValidRol = async (rol = '') => {
     throw new Error(`El rol ${rol} no esta registrado en la BD`);
   }
 };
+
+//const ValidTipoContacto = async(tipoContacto ='') =>{
+ // const existTipoContacto =await TipoContacto.findOne({tipoContacto});
+ // if(!existTipoContacto)
+  //{
+   // throw new Error(`El tipo de contacto no esta registrado en la BD`);
+ // }
+//};
 
 const emailExist = async (email = '') => {
   const exist = await Usuario.findOne({email});
@@ -28,6 +37,7 @@ const userExistById = async (id) => {
 module.exports = {
   ValidRol,
   emailExist,
-  userExistById
+  userExistById,
+
 
 };

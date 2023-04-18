@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const TipoContacto = mongoose.model('TipoContacto');
+//const TipoContacto = mongoose.model('TipoContacto');
 
 
 const ContactoSchema = Schema({

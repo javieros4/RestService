@@ -16,10 +16,10 @@ const PersonaSchema = Schema({
     rfc:{
         type:String,
     },
-    contacto: {
-        type: Schema.ObjectId,
-        ref: 'Contacto'
-    },
+     contacto: {
+         type: Schema.ObjectId,
+         ref: 'Contacto'
+     },
     
 });
 
