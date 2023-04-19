@@ -31,7 +31,7 @@ const personaGet = async (req, res = response) => {
     const { limite = 10, inicio = 0 } = req.query;
     const [NumRegistros, personas] = await Promise.all([
         Persona.countDocuments(query),
-        Persona.findByIdAndUpdate({ estado: true })
+        Persona.find({ estado: true })
             .skip(Number(inicio))
             .limit(Number(limite))
     ]);
@@ -43,6 +43,23 @@ const personaGet = async (req, res = response) => {
     });
 };
 
+
+const personaByContactoGet = async (req, res = response) => {
+    const query = { estado: true };
+    const { limite = 10, inicio = 0 ,tipoContacto =null} = req.query;
+    const [NumRegistros, personas] = await Promise.all([
+        Persona.countDocuments(query),
+        Persona.find({ estado: true })
+            .skip(Number(inicio))
+            .limit(Number(limite))
+    ]);
+
+    res.json({
+        msg: "get API persona",
+        NumRegistros,
+        personas
+    });
+};
 const personaPut = async (req, res = response) => {
     const { id } = req.params;
     const resp = await Persona.findByIdAndUpdate(id, req.body, { new: true });

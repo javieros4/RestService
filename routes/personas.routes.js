@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { personaPost, personaGet, personaDelete, personaPut } = require('../controllers/personas.controller')
+const { personaPost, personaGet, personaDelete, personaPut,personaExistById } = require('../controllers/personas.controller')
 const { check } = require("express-validator");
 
 const { validarCampos } = require("../middlewares/validar.campos");
@@ -27,6 +27,12 @@ router.post('/',
   personaPost);
 
 router.get("/",personaGet);
+
+router.get("/:id",[
+  check("tipoContacto", "El identificador para el tipo de contacto no es valido").isMongoId(),
+    check("tipoContacto").custom(ValidTipoContacto),
+    validarCampos,
+],personaExistById);
 
 router.delete("/:id",
 [
