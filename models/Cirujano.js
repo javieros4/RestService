@@ -10,7 +10,11 @@ const CirujanoSchema = Schema({
     especialidad:{
         type:String,
         require:[true,'La especialidad es requerida']        
-    } 
+    },
+    estado:{
+        type:Boolean,
+        default:true
+      } 
 });
 
 module.exports = model('Cirujano',CirujanoSchema);

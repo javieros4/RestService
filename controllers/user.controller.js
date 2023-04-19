@@ -1,8 +1,7 @@
 const { response } = require("express");
 const bcryptjs = require("bcryptjs");
-const Usuario = require("../models/usuario");
+const Usuario = require("../models/Usuario");
 const DataHash =require('../helpers/data.Hash');
-const usuario = require("../models/usuario");
 
 const userGet = async(req, res = response) => {
   //const { q, nombre, edad } = req.query;

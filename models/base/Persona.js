@@ -20,6 +20,10 @@ const PersonaSchema = Schema({
          type: Schema.ObjectId,
          ref: 'Contacto'
      },
+     estado:{
+        type:Boolean,
+        default:true
+      }
     
 });
 

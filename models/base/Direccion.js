@@ -30,6 +30,10 @@ ref1:{
 ref2:{
     type:String
 },
+estado:{
+    type:Boolean,
+    default:true
+  }
 
 });
 

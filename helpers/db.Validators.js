@@ -1,6 +1,6 @@
 const Rol = require("../models/rol");
 const TipoContacto = require("../models/enums/TipoContacto");
-const Usuario = require("../models/usuario");
+const Usuario = require("../models/Usuario");
 
 const ValidRol = async (rol = "") => {
   const existRol = await Rol.findOne({ rol });
@@ -30,10 +30,17 @@ const userExistById = async (id) => {
     throw new Error(`El ID de usuario ${id} no existe en la BD`);
   }
 };
+const personaExistById = async (id) => {
+  const exist = await Persona.findById(id);
+  if (!exist) {
+    throw new Error(`El ID de persona  ${id} no existe en la BD`);
+  }
+};
 
 module.exports = {
   ValidRol,
   emailExist,
   userExistById,
   ValidTipoContacto,
+  personaExistById
 };

@@ -22,7 +22,11 @@ const ProcedimientoSchema = Schema({
         type:Schema.ObjectId, 
         ref:'Paciente',
         require:[true,'Los datos paciente son necesarios']        
-    }
+    },
+    estado:{
+        type:Boolean,
+        default:true
+      }
 });
 
 

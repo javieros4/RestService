@@ -32,7 +32,11 @@ const HospitalSchema = Schema({
     contactos:
     {
         type: [ContactoSchema]
-    }
+    },
+    estado:{
+        type:Boolean,
+        default:true
+      }
 
 });
 

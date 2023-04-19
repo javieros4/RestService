@@ -36,6 +36,10 @@ const CartaSchema = Schema({
     monto: {
         type: Number
     },
+    estado:{
+        type:Boolean,
+        default:true
+      }
 
 
 });

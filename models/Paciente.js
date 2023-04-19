@@ -10,5 +10,9 @@ const PacienteSchema = Schema({
         type:Schema.ObjectId, 
         ref:'Contacto',
         require:[true,'Los datos de contacto son necesarios']        
-    } 
+    },
+    estado:{
+        type:Boolean,
+        default:true
+      } 
 });

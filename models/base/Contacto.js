@@ -12,8 +12,11 @@ const ContactoSchema = Schema({
     },
     email: {
         type: String,
-       
-    }
+    },
+    estado:{
+        type:Boolean,
+        default:true
+      }
 
 });
 
