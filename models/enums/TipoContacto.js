@@ -1,26 +1,10 @@
 const { Schema, model } = require("mongoose");
 
- tipoContacto :   [
-    paciente="paciente",
-    cirujano="cirujano",
-    aseguradora="aseguradora",
-    hospital ="hospital"
-]
-
-
-const TipoContactoSchema = Schema ({
-         value:{
-       type:String,
-         enum:tipoContacto,
-         default:tipoContacto.paciente
+ const tipoContactoSchema = Schema ({
+     value:{
+         type:String,
+         require:[true, 'El valor es obligatorio']
      },
- })
-
-// const TipoContactoSchema = Schema ({
-//     value:{
-//         type:String,
-//         require:[true, 'El valor es obligatorio']
-//     },
-// })
+ });
     
-module.exports = model('TipoContacto',TipoContactoSchema)
+module.exports = model('TipoContacto',tipoContactoSchema)

@@ -4,13 +4,15 @@ const Persona = require("../models/base/Persona");
 const Contacto = require("../models/base/Contacto");
 
 const personaPost = async(req,res = response) => {
-    console.log(req);
-    const { nombre,apellidoPaterno,apellidoMaterno,rfc} = req.body;
+    const { nombre,apellidoPaterno,apellidoMaterno,rfc,tipoContacto,telefono,email} = req.body;
+    const contacto = new Contacto({tipoContacto,telefono,email})
     const persona = new Persona({nombre,apellidoPaterno,apellidoMaterno,rfc})
-
+await contacto.save();
+persona.contacto = contacto._id;
     await persona.save();
     res.json({
-        persona
+        persona,
+        contacto
     })
 
 }
@@ -19,3 +21,5 @@ module.exports ={
     personaPost
 
 }
+
+

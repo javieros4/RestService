@@ -9,13 +9,17 @@ const ContactoSchema = Schema({
     },
     telefono: {
         type: Number,
-        unique: true
     },
     email: {
         type: String,
-        unique: true
+       
     }
 
 });
+
+ContactoSchema.methods.toJSON = function () {
+    const { __v, ...contacto } = this.toObject();
+    return contacto;
+  };
 
 module.exports = model('Contacto', ContactoSchema)
