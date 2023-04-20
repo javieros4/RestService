@@ -7,9 +7,14 @@ const personaPost = async (req, res = response) => {
     const { nombre, apellidoPaterno, apellidoMaterno, rfc, tipoContacto, telefono, email } = req.body;
     const contacto = new Contacto({ tipoContacto, telefono, email })
     const persona = new Persona({ nombre, apellidoPaterno, apellidoMaterno, rfc })
-    await contacto.save();
-    persona.contacto = contacto._id;
-    await persona.save();
+    await contacto.save(function(err)
+    {
+        if (err) return handleError(err);
+        
+        persona.contacto = contacto._id;        
+    });
+
+    persona.save();
     res.json({
         persona,
         contacto
@@ -75,7 +80,8 @@ module.exports = {
     personaPost,
     personaDelete,
     personaGet,
-    personaPut
+    personaPut,
+    personaByContactoGet
 
 }
 
