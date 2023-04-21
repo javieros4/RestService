@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { personaPost, personaGet, personaDelete, personaPut,personaExistById } = require('../controllers/personas.controller')
+const { personaPost, personaGet, personaDelete, personaPut,personaByContactoGet } = require('../controllers/personas.controller')
 const { check } = require("express-validator");
 
 const { validarCampos } = require("../middlewares/validar.campos");
