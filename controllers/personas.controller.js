@@ -6,13 +6,9 @@ const personaPost = async (req, res = response) => {
     const { nombre, apellidoPaterno, apellidoMaterno, rfc, tipoContacto, telefono, email } = req.body;
     const contacto = new Contacto({ tipoContacto, telefono, email })
     const persona = new Persona({ nombre, apellidoPaterno, apellidoMaterno, rfc })
-    await contacto.save(function(err)
-    {
-        if (err) return handleError(err);
-        
-        persona.contacto = contacto._id;        
-    });
-
+    if (!contacto)
+     throw ("error Post Persona");
+    persona.contacto = contacto._id;        
     persona.save();
     res.json({
         persona,
@@ -23,7 +19,7 @@ const personaPost = async (req, res = response) => {
 const personaDelete = async (req, res = response) => {
     const { id } = req.params
     const persona = await Persona.findByIdAndUpdate(id, { estado: false }, { new: true });
-    req.json({
+    res.json({
         msg: "Delete api Persona",
         persona
     });

@@ -1,6 +1,7 @@
 const Rol = require("../models/rol");
 const TipoContacto = require("../models/enums/TipoContacto");
 const Usuario = require("../models/Usuario");
+const Persona = require('../models/base/Persona')
 
 const ValidRol = async (rol = "") => {
   const existRol = await Rol.findOne({ rol });
