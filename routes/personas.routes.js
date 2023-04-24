@@ -7,7 +7,7 @@ const {
   personaByContactoGet,
 } = require("../controllers/personas.controller");
 const { check } = require("express-validator");
-
+const {validarJWT} = require('../middlewares/valid-jwt')
 const { validarCampos } = require("../middlewares/validar.campos");
 const {
   ValidRol,
@@ -22,6 +22,7 @@ const router = Router();
 router.post(
   "/",
   [
+    validarJWT,
     check("nombre", "El nombre es requerido").not().isEmpty(),
     check("apellidoPaterno", "El nombre es requerido").not().isEmpty(),
     check("apellidoMaterno", "El nombre es requerido").not().isEmpty(),

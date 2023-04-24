@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const RolesSchema = model('Roles');
 
 const UsuarioSchema = Schema({
     persona:{
@@ -36,4 +35,4 @@ const UsuarioSchema = Schema({
 
 });
 
-module.exports = mode('Usuario',UsuarioSchema)
+module.exports = model('Usuario',UsuarioSchema)

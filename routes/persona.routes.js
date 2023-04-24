@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { personaPost, personaGet, personaDelete, personaPut,personaByContactoGet } = require('../controllers/persona.controller')
 const { check } = require("express-validator");
 
+const {validarJWT} = require('../middlewares/valid-jwt')
 const { validarCampos } = require("../middlewares/validar.campos");
 const {
   ValidRol,
@@ -14,7 +15,7 @@ const {
 const router = Router();
 
 router.post('/',
-  [
+  [validarJWT,
     check("nombre", "El nombre es requerido").not().isEmpty(),
     check("apellidoPaterno", "El nombre es requerido").not().isEmpty(),
     check("apellidoMaterno", "El nombre es requerido").not().isEmpty(),
