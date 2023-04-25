@@ -6,7 +6,8 @@ const personaPost = async (req, res = response) => {
     const { nombre, apellidoPaterno, apellidoMaterno, rfc, tipoContacto, telefono, email } = req.body;
     const contacto = new Contacto({ tipoContacto, telefono, email })
     const persona = new Persona({ nombre, apellidoPaterno, apellidoMaterno, rfc })
-    if (!contacto)
+    contacto.save();
+    if (!contacto._id)
      throw ("error Post Persona");
     persona.contacto = contacto._id;        
     persona.save();
@@ -60,6 +61,7 @@ const personaByContactoGet = async (req, res = response) => {
         personas
     });
 };
+
 const personaPut = async (req, res = response) => {
     const { id } = req.params;
     const resp = await Persona.findByIdAndUpdate(id, req.body, { new: true });
