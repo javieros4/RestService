@@ -3,7 +3,7 @@ const Direccion = require("../models/base/Direccion");
 
 const direccionPost = async (req,res = response) => {
     try {
-        const { calle, numExt, numInt, colonia, delegacion, municipio, CP, ref1, ref2 } = direccion
+        const { calle, numExt, numInt, colonia, delegacion, municipio, CP, ref1, ref2 } = req.body;
         const direccion = new Direccion({ calle, numExt, numInt, colonia, delegacion, municipio, CP, ref1, ref2 });
         direccion.save();
         res.json({
@@ -16,18 +16,26 @@ const direccionPost = async (req,res = response) => {
     }
 }
 
-const direccionDelete = async (res, res = response) => {
+const direccionIdGet = async(req,res = response) => {
     const { id } = req.params;
-    const direccion = await Direccion.findById(id, { estado: false }, { new: true });
+    const direccion = await Direccion.findById(id);
     res.json({
-        msg: 'Delete Hospital',
+        msg: 'get API Direccion',
         direccion
     });
 }
 
-const direccionPut = async (req,res = response) => {   
-    const { id,calle, numExt, numInt, colonia, delegacion, municipio, CP, ref1, ref2 } = req.body;
-    const direccion = new Direccion({ id,calle, numExt, numInt, colonia, delegacion, municipio, CP, ref1, ref2 });    
+
+const direccionDelete = async (res, res = response) => {
+    const { id } = req.params;
+    const direccion = await Direccion.findById(id, { estado: false }, { new: true });
+    res.json({
+        msg: 'Delete API  Delete',
+        direccion
+    });
+}
+
+const direccionPut = async (req,res = response) => {       
         const resp  = await Direccion.findByIdAndUpdate(req.id, req, {new:true});
         res.json({
             msg:'put API Direccion',
@@ -39,5 +47,6 @@ const direccionPut = async (req,res = response) => {
 module.exports = {
     direccionPost,
     direccionDelete,
-    direccionPut
+    direccionPut,
+    direccionIdGet
 }

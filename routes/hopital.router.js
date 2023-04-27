@@ -6,11 +6,7 @@ const { check } = require("express-validator");
 const { validarJWT } = require('../middlewares/valid-jwt')
 const { validarCampos } = require("../middlewares/validar.campos");
 const {
-    ValidRol,
-    emailExist,
-    userExistById,
-    ValidTipoContacto,
-    personaExistById,
+    personaExistById
 } = require("../helpers/db.Validators");
 
 

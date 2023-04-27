@@ -3,6 +3,8 @@ const TipoContacto = require("../models/enums/TipoContacto");
 const Usuario = require("../models/Usuario");
 const Persona = require('../models/base/Persona');
 const Hospital = require("../models/base/Hospital");
+const Direccion = require("../models/base/Direccion");
+const Contacto = require("../models/base/Contacto");
 
 const ValidRol = async (rol = "") => {
   const existRol = await Rol.findOne({ rol });
@@ -47,6 +49,21 @@ const hospitalExistById = async (id) => {
   }
 };
 
+const direccionExistById = async (id) => {
+  const exist = await Direccion.findById(id);
+  if (!exist) {
+    throw new Error(`El ID de direccion  ${id} no existe en la BD`);
+  }
+};
+
+const contactoExistById = async (id) => {
+  const exist = await Contacto.findById(id);
+  if (!exist) {
+    throw new Error(`El ID de contacto  ${id} no existe en la BD`);
+  }
+};
+
+
 
 module.exports = {
   ValidRol,
@@ -54,5 +71,7 @@ module.exports = {
   userExistById,
   ValidTipoContacto,
   personaExistById,
-  hospitalExistById
+  hospitalExistById,
+  direccionExistById,
+  contactoExistById
 };
