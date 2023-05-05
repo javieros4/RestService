@@ -1,5 +1,4 @@
-const { Schema, model } = require("mongoose");
-const ContactoSchema = mongoose.model('Contacto');
+const { Schema, model, mongo } = require("mongoose");
 
 const HospitalSchema = Schema({
 
@@ -31,7 +30,7 @@ const HospitalSchema = Schema({
     },
     contactos:
     {
-        type: [ContactoSchema]
+        type: [Schema.ObjectId]
     },
     estado:{
         type:Boolean,

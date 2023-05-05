@@ -26,7 +26,7 @@ const direccionIdGet = async(req,res = response) => {
 }
 
 
-const direccionDelete = async (res, res = response) => {
+const direccionDelete = async (req, res = response) => {
     const { id } = req.params;
     const direccion = await Direccion.findById(id, { estado: false }, { new: true });
     res.json({

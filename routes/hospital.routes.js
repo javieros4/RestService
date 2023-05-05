@@ -1,9 +1,13 @@
 const { Router } = require("express");
 
-const { hospitalDelete, hospitalGet, hospitalPost, hospitalPut
+const { 
+     hospitalDelete,
+     hospitalGet, 
+     hospitalPost, 
+     hospitalPut
 } = require("../controllers/hospital.controller");
 const { check } = require("express-validator");
-const { validarJWT } = require('../middlewares/valid-jwt')
+//const { validarJWT } = require('../middlewares/valid-jwt')
 const { validarCampos } = require("../middlewares/validar.campos");
 const {
     personaExistById
@@ -12,7 +16,7 @@ const {
 
 const router = Router();
 
-router.post("/",
+router.post('/',
     [
         check("nombre", "El nombre es requerido").not().isEmpty(),
         check("direccion", "El identificador para el tipo de contacto no es valido").isMongoId(),
@@ -35,3 +39,5 @@ router.put('/id', [
     //check("direccion", "El identificador para el tipo de contacto no es valido").isMongoId(),
     validarCampos
 ], hospitalDelete);
+
+module.exports = router;

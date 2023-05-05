@@ -12,7 +12,6 @@ router.post('/login',[
  check('email','El email no es valido').isEmail(),
  check('password', 'la contraseña es requerida').not().isEmpty(),
  validarCampos
-
 ],login);
 
 module.exports = router;

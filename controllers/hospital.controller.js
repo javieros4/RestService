@@ -2,7 +2,6 @@ const { response } = require("express");
 const Hospital = require("../models/base/Hospital");
 const Direccion = require("../models/base/Direccion");
 const direccionController = require('../controllers/direccion.controller');
-const Hospital = require("../models/base/Hospital");
 
 const populateDireccion = { path: 'direccion', model: 'Direccion' }
 
@@ -24,7 +23,7 @@ const hospitalPost = async (req, res = response) => {
 
 }
 
-const hospitalDelete = async (res, res = response) => {
+const hospitalDelete = async (req, res = response) => {
     const { id } = req.params;
     const hospital = await Hospital.findById(id, { estado: false }, { new: true });
     const { direccion } = await direccionController.direccionDelete(hospital.direccion);

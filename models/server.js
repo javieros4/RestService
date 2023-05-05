@@ -42,9 +42,9 @@ class Server {
     this.app.use(this.authPath, require('../routes/auth.routes'));
     this.app.use(this.userRouterPath, require('../routes/user.routes'));
     this.app.use(this.personaRouterPath, require('../routes/persona.routes'));
-    this.app.use(this.hospitalRouterPath,require('../routes/hopital.router'));
+    this.app.use(this.hospitalRouterPath,require('../routes/hospital.routes'));
     this.app.use(this.direccionRouterPath,require('../routes/direccion.routes'));
-    this.app.use(this.contactoRouterPath,require('../routes/contacto.routes'));
+   // this.app.use(this.contactoRouterPath,require('../routes/contacto.routes'));
     
   }
 
