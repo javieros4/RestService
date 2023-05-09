@@ -2,7 +2,7 @@ const { response, request } = require("express");
 const jwt = require("jsonwebtoken");
 
 const validarJWT = (req = request, res = response, next) => {
-
+console.log(req);
     const token = req.header('x-token');
     console.log(token);
     if (!token) {

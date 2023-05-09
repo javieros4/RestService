@@ -28,7 +28,7 @@ const PersonaSchema = Schema({
 });
 
 PersonaSchema.methods.toJSON = function () {
-    const { __v,...persona } = this.toObject();
+    const { __v,_id,...persona } = this.toObject();
     persona.uid = _id;
     return persona;
   };

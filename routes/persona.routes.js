@@ -15,7 +15,7 @@ const {
 const router = Router();
 
 router.post('/',
-  [validarJWT,
+  [
     check("nombre", "El nombre es requerido").not().isEmpty(),
     check("apellidoPaterno", "El nombre es requerido").not().isEmpty(),
     check("apellidoMaterno", "El nombre es requerido").not().isEmpty(),
