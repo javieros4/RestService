@@ -1,9 +1,11 @@
 const { Router } = require("express");
-const {contactoDelete,contactoPost,contactonPut,contactoIdGet} = require("../controllers/contacto.controller");
+const {contactoDelete,contactoPost,contactonPut,contactoIdGet} = require("../controllers/Contacto.controller");
 const { validarJWT } = require('../middlewares/valid-jwt')
 const { validarCampos } = require("../middlewares/validar.campos");
+const { check } = require("express-validator");
 const {        
-    contactoExistById
+    contactoExistById,
+    ValidTipoContacto
 } = require("../helpers/db.Validators");
 
 
@@ -32,3 +34,6 @@ router.get('/:id',[
     check("id","El identificador para el tipo de contacto no es valido"),
     validarCampos,
 ],contactoIdGet);
+
+
+module.exports= router;

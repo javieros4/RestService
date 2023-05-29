@@ -1,7 +1,7 @@
 const { response } = require("express");
 const Hospital = require("../models/base/Hospital");
 const Direccion = require("../models/base/Direccion");
-const direccionController = require('../controllers/direccion.controller');
+const direccionController = require('./Direccion.controller');
 
 const populateDireccion = { path: 'direccion', model: 'Direccion' }
 

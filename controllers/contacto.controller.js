@@ -20,7 +20,7 @@ const contactoIdGet = async (req, res = response) => {
     });
 }
 
-const contactoDelete = async (res, res = response) => {
+const contactoDelete = async (req, res = response) => {
     const { id } = req.params;
     const contacto = await Contacto.findById(id, { estado: false }, { new: true });
     res.json({

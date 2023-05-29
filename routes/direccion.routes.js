@@ -4,7 +4,7 @@ const {
     direccionPost,
     direccionPut ,
     direccionIdGet,
-} = require("../controllers/direccion.controller");
+} = require("../controllers/Direccion.controller");
 const { validarJWT } = require('../middlewares/valid-jwt')
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validar.campos");
