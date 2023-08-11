@@ -25,10 +25,10 @@ const hospitalPost = async (req, res = response) => {
 
 const hospitalDelete = async (req, res = response) => {
     const { id } = req.params;
-    const hospital = await Hospital.findById(id, { estado: false }, { new: true });
+    const hospital = await Hospital.findByIdAndUpdate(id, { estado: false }, { new: true });
     const { direccion } = await direccionController.direccionDelete(hospital.direccion);
     res.json({
-        msg: 'Delete Hospital',
+        msg: 'Hospital Borrado',
         hospital,
         direccion
     })

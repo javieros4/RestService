@@ -14,8 +14,8 @@ class Server {
     this.direccionRouterPath ='/api/direccion';
     this.contactoRouterPath ='/api/contacto';
 
-    //conectar BD
-    this.conectarDB();
+    //conectar BD  se comenta para pruebas
+    //this.conectarDB();
 
 
     //middlewares
@@ -54,6 +54,7 @@ class Server {
     });
   }
 
+  
   async conectarDB(){
     await dbConnection();
   }

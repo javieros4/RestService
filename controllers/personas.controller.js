@@ -38,7 +38,7 @@ const personaGet = async (req, res = response) => {
     ]);
 
     res.json({
-        msg: "get API persona",
+        msg: "Obtener Personas",
         NumRegistros,
         personas
     });
