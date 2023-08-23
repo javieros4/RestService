@@ -5,6 +5,7 @@ const Persona = require('../models/base/Persona');
 const Hospital = require("../models/base/Hospital");
 const Direccion = require("../models/base/Direccion");
 const Contacto = require("../models/base/Contacto");
+const Aseguradora = require("../models/Aseguradora");
 
 const ValidRol = async (rol = "") => {
   const existRol = await Rol.findOne({ rol });
@@ -64,6 +65,13 @@ const contactoExistById = async (id) => {
 };
 
 
+const aseguradoraExistById = async (id) =>{
+  const exist = await Aseguradora.findById(id);
+  if(!exist){
+    throw new Error(`El ID de aseguradora ${id} no existe en la BD`);
+  }
+};
+
 
 module.exports = {
   ValidRol,
@@ -73,5 +81,6 @@ module.exports = {
   personaExistById,
   hospitalExistById,
   direccionExistById,
-  contactoExistById
+  contactoExistById,
+  aseguradoraExistById
 };

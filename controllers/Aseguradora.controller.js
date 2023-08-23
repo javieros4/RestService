@@ -5,27 +5,27 @@ const contactoController = require("./Contacto.controller");
 const Persona = require("../models/base/Persona");
 
 const aseguradoraPost = async (req, res = response) => {
-    const { nombre, contactos, estado } = req.body;
-    const aseguradora = new Aseguradora({ nombre, contactos, estado });
+    const { nombre,  estado } = req.body;
+    const aseguradora = new Aseguradora({ nombre,  estado });
 
-    const { msg, ...resto } = await contactoController.contactoPost(req.body)
-        .then(
-            data => {
-                aseguradora.Contacto.data._id;
-                aseguradora.save();
+    // const { msg, ...resto } = await contactoController.contactoPost(req.body)
+    //     .then(
+    //         data => {
+    //             aseguradora.Contacto.data._id;
+    //             aseguradora.save();
 
-            })
-        .catch(error => { throw (`Error al guardar Aseguradora: {error}`) });
+    //         })
+    //     .catch(error => { throw (`Error al guardar Aseguradora: {error}`) });
     res.json({
         aseguradora,
-        resto
+        
     })
 };
 
 const aseguradoraDelete = async (req, res = response) => {
     const { id } = req.params;
     const aseguradora = await Aseguradora.findByIdAndUpdate(id, { estado: false }, { new: true });
-    const { constacto } = await contactoController.contactoDelete(aseguradora.contacto);
+   // const { constacto } = await contactoController.contactoDelete(aseguradora.contacto);
     res.json({
         msg: 'Aseguradora Borrada',
         aseguradora,
@@ -53,7 +53,28 @@ const aseguradoraByIdGet = async (req, res = response) => {
     const resp = await Aseguradora.findById([id]);
     res.json({
         msg: "Obtiene Aseguradora",
-        resp
+        resp,
     });
 
+}
+
+const aseguradoraPut = async (req, res = response) => {
+const {id} = req.params;
+const { nombre } = req.body;
+const aseguradora = new Aseguradora({nombre});
+const resp = await Aseguradora.findByIdAndUpdate(id, aseguradora,{new:true});
+res.json({
+    msg:'put Api Aseguradora',
+    resp
+})
+
+
+}
+
+module.exports = {
+    aseguradoraPost,
+    aseguradoraDelete,
+    aseguradorasGet,
+    aseguradoraByIdGet,
+    aseguradoraPut,
 }

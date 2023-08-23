@@ -13,6 +13,7 @@ class Server {
     this.hospitalRouterPath ='/api/hospital';
     this.direccionRouterPath ='/api/direccion';
     this.contactoRouterPath ='/api/contacto';
+    this.aseguradoraPath= '/api/aseguradora';
 
     //conectar BD  se comenta para pruebas
     //this.conectarDB();
@@ -45,7 +46,7 @@ class Server {
     this.app.use(this.hospitalRouterPath,require('../routes/Hospital.routes'));
     this.app.use(this.direccionRouterPath,require('../routes/Direccion.routes'));
     this.app.use(this.contactoRouterPath,require('../routes/Contacto.routes'));
-    
+    this.app.use(this.aseguradoraPath,require('../routes/Aseguradora.routes'));
   }
 
   listen() {

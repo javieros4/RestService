@@ -36,7 +36,7 @@ const contactonPut = async (req, res = response) => {
     const contacto = new Contacto({ calle, numExt, numInt, colonia, delegacion, municipio, CP, ref1, ref2 });
     const resp = await Direccion.findByIdAndUpdate(id, contacto, { new: true });
     res.json({
-        msg: 'put API Direccion',
+        msg: 'put API Contacto',
         resp
     })
 }

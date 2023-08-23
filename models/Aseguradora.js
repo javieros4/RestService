@@ -9,7 +9,7 @@ const AseguradoraSchema = Schema({
         require: [true, 'El nombde de la Aseguradora es requerido']
     },
     contactos: {
-        type: [ContactoSchema]
+        type: [Schema.ObjectId]
     },
     estado:{
         type:Boolean,
