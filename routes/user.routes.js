@@ -10,7 +10,7 @@ const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validar.campos");
 const {
   ValidRol,
-  emailExist,
+  emailExistUser,
   userExistById,
 } = require("../helpers/db.Validators");
 
@@ -26,7 +26,7 @@ router.post(
       min: 6,
     }),
     // check("email", "El email no es valido").isEmail(),
-    check("email").custom(emailExist),
+    check("email").custom(emailExistUser),
     //check('rol','No es un rol permitido').isIn(['ADMIN_ROLE','USER_ROLE']),
     check("rol").custom(ValidRol),
     validarCampos,

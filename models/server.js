@@ -16,7 +16,7 @@ class Server {
     this.aseguradoraPath= '/api/aseguradora';
 
     //conectar BD  se comenta para pruebas
-    //this.conectarDB();
+    this.conectarDB();
 
 
     //middlewares

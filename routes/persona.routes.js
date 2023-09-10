@@ -6,9 +6,9 @@ const {validarJWT} = require('../middlewares/valid-jwt')
 const { validarCampos } = require("../middlewares/validar.campos");
 const {
   ValidRol,
-  emailExist,
   userExistById,
   ValidTipoContacto,
+  rfcExist,
   personaExistById
 } = require("../helpers/db.Validators");
 
@@ -21,6 +21,7 @@ router.post('/',
     check("apellidoMaterno", "El nombre es requerido").not().isEmpty(),
     check("telefono", "El numero telefonico tiene que tener 10 digitos").isNumeric().isLength({ max: 10 }),
     check("email").isEmail(),
+    check("rfc").custom(rfcExist),
     check("tipoContacto", "El identificador para el tipo de contacto no es valido").isMongoId(),
     check("tipoContacto").custom(ValidTipoContacto),
     validarCampos,

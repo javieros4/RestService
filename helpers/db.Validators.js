@@ -22,12 +22,27 @@ const ValidTipoContacto = async (tipoContacto = "") => {
   }
 };
 
-const emailExist = async (email = "") => {
+const emailExistUser = async (email = "") => {
   const exist = await Usuario.findOne({ email });
   if (exist) {
     throw new Error(`El email ${email} ya esta registrado  en la BD`);
   }
 };
+
+const emailExistPersona = async (email = "") => {
+  const exist = await Usuario.findOne({ email });
+  if (exist) {
+    throw new Error(`El email ${email} ya esta registrado  en la BD`);
+  }
+};
+
+const rfcExist = async (rfc ="")=> {
+  const exist = await Persona.findOne({rfc});
+  if(exist)
+  {
+    throw new Error(`El RFC ${rfc} ya esta registrado  en la BD`);
+  }
+}
 
 const userExistById = async (id) => {
   const exist = await Usuario.findById(id);
@@ -75,7 +90,9 @@ const aseguradoraExistById = async (id) =>{
 
 module.exports = {
   ValidRol,
-  emailExist,
+  emailExistUser,
+  emailExistPersona,
+  rfcExist,
   userExistById,
   ValidTipoContacto,
   personaExistById,
